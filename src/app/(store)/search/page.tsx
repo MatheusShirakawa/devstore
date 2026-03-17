@@ -2,6 +2,9 @@ import { ProductList } from "@/components/product-list";
 import { api } from "@/data/api";
 import { Product } from "@/data/types/product";
 import { redirect } from "next/navigation";
+import { Suspense } from "react";
+import { connection } from 'next/server'
+import SearchLoading from "./loading";
 
 interface SearchPageProps {
 	searchParams:{
@@ -12,18 +15,14 @@ interface SearchPageProps {
 async function searchProducts(query:string): Promise<Product[]>{
 	const response = await api(`/products/search?q=${query}`,{
 		cache:'no-cache'
-		// next:{
-		// 	revalidate:60 * 60
-		// }
 	})
 	const products = await response.json()
 	return products
 }
 
-
 export default async function SearchPage({ searchParams }:SearchPageProps){
+	await connection()
 	const { q: query } = await searchParams
-
 
 	const products = await searchProducts(query)
 

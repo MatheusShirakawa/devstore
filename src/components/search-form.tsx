@@ -2,8 +2,9 @@
 
 import { Search } from "lucide-react"
 import { useRouter, useSearchParams } from "next/navigation"
+import { Suspense } from "react"
 
-export function SearchForm(){
+function SearchMain (){
 	const router = useRouter()
 	const searchParams = useSearchParams()
 
@@ -37,5 +38,13 @@ export function SearchForm(){
 				className="flex-1 bg-transparent outline-none text-sm placeholder:text-zinc-500"
 			/>
 		</form>
+	)
+}
+
+export function SearchForm(){
+	return(
+		<Suspense>
+			<SearchMain/>
+		</Suspense>
 	)
 }

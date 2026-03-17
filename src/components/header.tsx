@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-
+import { Suspense } from "react"
 import { CartWidget } from "./cart-widget"
 import { SearchForm } from "./search-form"
 
@@ -9,7 +9,9 @@ export function Header(){
 		<div className="flex items-center justify-between w-full">
 			<div className="flex items-center gap-5">
 				<Link href="/" className="text-2xl font-extrabold text-white">devstore</Link>
-				<SearchForm />
+				<Suspense fallback={null}>
+					<SearchForm />
+				</Suspense>
 			</div>
 
 			<div className="flex items-center gap-4">

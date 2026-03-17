@@ -22,7 +22,7 @@ export default async function Home() {
 	const [highlightedProduct, ...otherProducts] = await getFeaturedProducts()
 
 	return (
-		<div className="grid max-h-215 grid-cols-9 grid-rows-6 gap-6">
+		<div className="grid grid-cols-9 grid-rows-6 gap-6 max-h-[85vh]">
 			<ProductList isHighlighted product={highlightedProduct} />
 
 			{otherProducts.map(product => (

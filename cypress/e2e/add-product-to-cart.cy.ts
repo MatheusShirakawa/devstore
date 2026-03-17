@@ -24,11 +24,9 @@ describe('add product to cart', () => {
 	})
 
 	it('should be able to search for a product and add it to the cart ', () => {
-		cy.get('input[name="q"]').type('moletom')
-		cy.get('button[type="submit"]').click()
+		cy.searchByQuery('moletom')
 
 		cy.get('a[href*="/product"]').first().click()
-
 		cy.url().should('include', '/product')
 
 		cy.contains('Adicionar ao carrinho').click()
