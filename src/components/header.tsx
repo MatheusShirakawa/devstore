@@ -31,8 +31,3 @@ export function Header(){
 		</div>
 	)
 }
-
-
-// hard navegation <a> form get
-
-// soft navegation Link/Image
